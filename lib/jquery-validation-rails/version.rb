@@ -1,6 +1,5 @@
 module JqueryValidation
   module Rails
-    class Engine < ::Rails::Engine
-    end
+    VERSION = "1.12.0pre"
   end
 end
