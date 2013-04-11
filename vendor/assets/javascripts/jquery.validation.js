@@ -727,7 +727,12 @@ $.extend($.validator, {
     },
 
     idOrName: function( element ) {
-      return this.groups[element.name] || (this.checkable(element) ? element.name : element.id || element.name);
+      //add grouped array item support via unique validation-id
+      if($(element).data('validation-id') && this.groups[element.name]) {
+        var array_group_item = this.groups[element.name] + '-' + $(element).data('validation-id');
+      }
+
+      return array_group_item || this.groups[element.name] || (this.checkable(element) ? element.name : element.id || element.name);
     },
 
     validationTargetFor: function( element ) {
