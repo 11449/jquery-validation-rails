@@ -813,6 +813,39 @@ $.extend($.validator, {
         valid: true,
         message: this.defaultMessage( element, "remote" )
       });
+    },
+
+    group_names: function(){
+      var names = [];
+
+      for(var attribute in this.groups){
+        if(this.groups.hasOwnProperty(attribute)) {
+          names.push(this.groups[attribute]);
+        }
+      }
+
+      return names;
+    },
+
+    in_group: function(element){
+
+      var name_or_group = this.idOrName(element),
+          in_group = (this._group_names().indexOf(name_or_group) !== -1);
+
+      return (in_group === true) ? name_or_group : false;
+
+    },
+
+    element_names_of_group: function(group_name){
+      var names = [];
+      for(var key in this.groups){
+        if(this.groups.hasOwnProperty(key)) {
+          if(this.groups[key] === group_name) {
+            names.push(key);
+          }
+        }
+      }
+      return names;
     }
 
   },
