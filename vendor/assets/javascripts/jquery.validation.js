@@ -830,7 +830,7 @@ $.extend($.validator, {
     in_group: function(element){
 
       var name_or_group = this.idOrName(element),
-          in_group = (this._group_names().indexOf(name_or_group) !== -1);
+          in_group = (this.group_names().indexOf(name_or_group) !== -1);
 
       return (in_group === true) ? name_or_group : false;
 
